@@ -38,7 +38,40 @@ public class AdminUsersController {
     public
     @ResponseBody
     User findUser(HttpServletRequest request) {
-        String findBy = request.getParameter("findBy");
+        String findBy = null;
+        String findValue = request.getParameter("findValue");
+        User response = null;
+        try {
+            if (findBy.equals("name")) {
+                response = usersDAO.getUserByName(findValue);
+            } else {
+                response = usersDAO.getUserByEmail(findValue);
+            }
+        } catch (NoResultException NRE) {
+            response = null;
+        } finally {
+            return response;
+        }
+    }
+    User findUser2(HttpServletRequest request) {
+        String findBy = null;
+        String findValue = request.getParameter("findValue");
+        User response = null;
+        try {
+            if (findBy.equals("name")) {
+                response = usersDAO.getUserByName(findValue);
+            } else {
+                response = usersDAO.getUserByEmail(findValue);
+            }
+        } catch (NoResultException NRE) {
+            response = null;
+        } finally {
+            return response;
+        }
+    }
+    
+    User findUser3(HttpServletRequest request) {
+        String findBy = null;
         String findValue = request.getParameter("findValue");
         User response = null;
         try {
@@ -63,7 +96,7 @@ public class AdminUsersController {
     public
     @ResponseBody
     AJAXResponse deleteUser(HttpServletRequest request) {
-        int id = Integer.parseInt(request.getParameter("id"));
+        int id = Integer.parseInt(null);
         AJAXResponse response = new AJAXResponse();
         try {
             usersDAO.deleteUser(id);

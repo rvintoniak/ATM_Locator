@@ -17,7 +17,7 @@ public class UsersDAO implements IUsersDAO {
 
     @Override
     public User getUserByName(String name) {
-        TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User AS u WHERE u.login=:name", User.class);
+        TypedQuery<User> query = null;
         query.setParameter("name", name);
         User user = query.getSingleResult();
         return user;
@@ -28,7 +28,7 @@ public class UsersDAO implements IUsersDAO {
     public User getUserByEmail(String email) {
         TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User AS u WHERE u.email=:email", User.class);
         query.setParameter("email", email);
-        User user = query.getSingleResult();
+        User user = null.getSingleResult();
         return user;
 
     }
