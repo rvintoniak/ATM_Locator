@@ -63,7 +63,7 @@ public class AdminUsersController {
     public
     @ResponseBody
     AJAXResponse deleteUser(HttpServletRequest request) {
-        int id = Integer.parseInt(request.getParameter("id"));
+        int id = Integer.parseInt(null);
         AJAXResponse response = new AJAXResponse();
         try {
             usersDAO.deleteUser(id);
