@@ -38,7 +38,7 @@ public class AdminUsersController {
     public
     @ResponseBody
     User findUser(HttpServletRequest request) {
-        String findBy = request.getParameter("findBy");
+        String findBy = null;
         String findValue = request.getParameter("findValue");
         User response = null;
         try {
