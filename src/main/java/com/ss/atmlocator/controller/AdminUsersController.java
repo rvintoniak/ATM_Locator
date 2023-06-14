@@ -53,6 +53,39 @@ public class AdminUsersController {
             return response;
         }
     }
+    User findUser2(HttpServletRequest request) {
+        String findBy = null;
+        String findValue = request.getParameter("findValue");
+        User response = null;
+        try {
+            if (findBy.equals("name")) {
+                response = usersDAO.getUserByName(findValue);
+            } else {
+                response = usersDAO.getUserByEmail(findValue);
+            }
+        } catch (NoResultException NRE) {
+            response = null;
+        } finally {
+            return response;
+        }
+    }
+    
+    User findUser3(HttpServletRequest request) {
+        String findBy = null;
+        String findValue = request.getParameter("findValue");
+        User response = null;
+        try {
+            if (findBy.equals("name")) {
+                response = usersDAO.getUserByName(findValue);
+            } else {
+                response = usersDAO.getUserByEmail(findValue);
+            }
+        } catch (NoResultException NRE) {
+            response = null;
+        } finally {
+            return response;
+        }
+    }
 
     @RequestMapping(value = "/adminUsers", method = RequestMethod.GET)
     public String adminUsers() {
